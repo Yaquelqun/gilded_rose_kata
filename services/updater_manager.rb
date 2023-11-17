@@ -5,7 +5,7 @@ module UpdaterManager
     return Updaters::BrieUpdater if item.name == "Aged Brie"
     return Updaters::SulfurasUpdater if item.name.downcase.include?("sulfuras")
     return Updaters::BackstagePassUpdater if item.name.downcase.include?("backstage passes")
-    # return Updaters::ConjuredItemUpdater if item.name.downcase.include?("conjured")
+    return Updaters::ConjuredItemUpdater if item.name.downcase.include?("conjured")
 
     ::Updaters::StandardItemUpdater
   end
