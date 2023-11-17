@@ -1,9 +1,9 @@
-require_relative 'services/update_item'
-# require_relative 'services/updaters/*.rb'
+require_relative 'services/updater_manager'
 
 def update_quality(items)
   items.each do |item|
-    UpdateItem.new(item, nil).tick
+    updater = UpdaterManager.find_updater_for(item)
+    updater.new(item).tick
   end
 end
 
