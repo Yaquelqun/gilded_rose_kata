@@ -12,7 +12,7 @@ class ItemUpdater
           item.quality -= 1
         end
       end
-    else
+    else # item name is aged brie or backstage pass
       if item.quality < 50
         item.quality += 1
         if item.name == 'Backstage passes to a TAFKAL80ETC concert'
@@ -29,26 +29,23 @@ class ItemUpdater
         end
       end
     end
-    if item.name != 'Sulfuras, Hand of Ragnaros'
-      item.sell_in -= 1
-    end
+
+    # Update sell_in
+    item.sell_in -= 1 if item.name != 'Sulfuras, Hand of Ragnaros'
+
+    # This basically re-updates the quality if the item is expired (useful for normal items/backstage passes and aged brie)
     if item.sell_in < 0
       if item.name != "Aged Brie"
         if item.name != 'Backstage passes to a TAFKAL80ETC concert'
-          if item.quality > 0
-            if item.name != 'Sulfuras, Hand of Ragnaros'
-              item.quality -= 1
-            end
+          if item.quality > 0 && item.name != 'Sulfuras, Hand of Ragnaros'
+            item.quality -= 1
           end
         else
-          item.quality = item.quality - item.quality
+          item.quality = 0
         end
-      else
-        if item.quality < 50
-          item.quality += 1
-        end
+      elsif item.quality < 50 # if it's brie then
+        item.quality += 1
       end
     end
   end
-
 end
