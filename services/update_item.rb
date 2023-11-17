@@ -1,8 +1,9 @@
-class ItemUpdater
-  attr_reader :item
+class UpdateItem
+  attr_reader :item, :updater
 
-  def initialize(item)
+  def initialize(item, updater)
     @item = item
+    @updater = updater
   end
 
   def tick
