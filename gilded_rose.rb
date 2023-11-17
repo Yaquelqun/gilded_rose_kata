@@ -1,4 +1,5 @@
 require_relative 'services/updater_manager'
+require 'byebug'
 
 def update_quality(items)
   items.each do |item|
