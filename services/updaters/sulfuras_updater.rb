@@ -1,11 +1,9 @@
+require_relative 'application_item_updater'
+
 module Updaters
-  class SulfurasUpdater
+  class SulfurasUpdater < ApplicationItemUpdater
     attr_reader :item
 
-    def initialize(item)
-      @item = item
-    end
-
-    def tick;end
+    def tick; end
   end
 end

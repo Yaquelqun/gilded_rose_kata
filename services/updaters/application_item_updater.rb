@@ -1,7 +1,5 @@
-require_relative 'application_item_updater'
-
 module Updaters
-  class StandardItemUpdater < ApplicationItemUpdater
+  class ApplicationItemUpdater
     attr_reader :item
 
     def initialize(item)
@@ -18,13 +16,7 @@ module Updaters
     end
 
     def update_quality
-      item.quality = [item.quality - (expired? ? 2 : 1), 0].max
-    end
-
-    private
-
-    def expired?
-      item.sell_in.negative?
+      raise 'undefined update_quality method'
     end
   end
 end
